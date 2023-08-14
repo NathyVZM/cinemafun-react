@@ -1,0 +1,10 @@
+@mixin flex($justify: initial, $align: initial, $direction: row, $wrap: wrap, $gap: 0)
+    display: flex
+    justify-content: $justify
+    align-items: $align
+    flex-flow: $direction $wrap
+    gap: $gap
+
+@mixin size($width, $height)
+    width: $width
+    height: $height
