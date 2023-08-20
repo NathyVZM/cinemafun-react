@@ -1,0 +1,52 @@
+@import '../../styles/variables'
+    
+#footer
+    clear: both
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-flow: column wrap
+    gap: 1em
+    padding-top: 5vmax
+
+    & section
+        flex: 1
+        width: 100%
+
+    & section
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-flow: row wrap
+
+    & section:first-child
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-flow: row wrap
+        gap: 0.5em
+
+    & section:first-child i
+        color: $primary
+        font-size: 1.8em
+
+    & section:first-child h2
+        font-size: 1.3em
+        margin: 0
+
+    & section:nth-child(2)
+        gap: 2vmax
+
+    & section:nth-child(2) i
+        font-size: 1.5em
+        color: $secondary-text
+
+    & section:last-child
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-flow: column wrap
+
+    & section:last-child small
+        color: $secondary-text
+        font-size: 0.875rem

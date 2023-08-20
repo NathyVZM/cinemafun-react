@@ -1,0 +1,58 @@
+@import '../../styles/variables'
+@import '../../styles/mixins'
+    
+.movie
+    flex: auto
+    width: 17.5rem
+    min-height: 30rem
+    @include flex(space-between, center, column, wrap, 1rem)
+    border-radius: 1.5rem
+    background-color: $background
+    padding: 1rem
+    transition: all 0.2s ease
+    cursor: pointer
+    margin: 0
+
+    &:hover
+        scale: 1.07
+        rotate: -1.3deg
+        filter: drop-shadow(0px 0px 1rem rgb(255, 255, 255, 0.1))
+
+    & img
+        flex: auto
+        width: 100%
+        max-height: 25rem
+        border-radius: 1.5rem
+        object-fit: cover
+        translate: 0 0 1px
+
+    & section
+        width: 100%
+        @include flex(center, flex-end, column, wrap, 0.5rem)
+
+    & p
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
+        width: 100%
+        line-height: 1
+
+    & .subtitle
+        color: $secondary-text
+
+.friendly
+    color: $success
+
+.teen
+    color: $secondary
+
+.adult
+    color: $warn
+
+.genre
+    background-color: #8e92aa66
+    border-radius: 5em
+    text-align: center
+    padding: 0.5em 1.5em
+    width: 8em
+    display: inline-block

@@ -1,5 +1,5 @@
 import './App.sass'
-import { Header, Sidebar } from './components'
+import { Footer, Header, Sidebar } from './components'
 import { Router } from './router'
 
 export const App = () => {
@@ -16,6 +16,7 @@ export const App = () => {
       <Header />
       <Sidebar />
       <Router />
+      <Footer />
     </>
   )
 }

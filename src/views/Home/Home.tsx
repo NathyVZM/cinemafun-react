@@ -1,11 +1,24 @@
-import { getMovies } from '../../api/getMovies'
 import './Home.sass'
+import { useEffect } from 'react'
+import { useFetch } from '../../core/hooks/useFetch'
+import { MovieCard } from '../../components'
 
 export const Home = () => {
-    getMovies()
+    const { movies, getMovies } = useFetch()
+
+    useEffect(() => {
+        getMovies()
+    }, [])
+    
     return (
-        <>
-            <h1>Home</h1>
-        </>
+        <main id='main'>
+            <section>
+                {
+                    movies.map(movie => (
+                        <MovieCard movie={movie} key={movie.id} />
+                    ))
+                }
+            </section>
+        </main>
     )
 }
