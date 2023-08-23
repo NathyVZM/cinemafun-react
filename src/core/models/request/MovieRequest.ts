@@ -1,7 +1,9 @@
+import { Cast, Genre, ClassificationRequest } from ".."
+
 export interface MovieRequest {
-    adult: boolean
     backdrop_path: string
-    genre_ids: number[]
+    credits: { cast: Cast[] }
+    genres: Genre[]
     id: number
     original_language: string
     original_title: string
@@ -9,9 +11,9 @@ export interface MovieRequest {
     popularity: number
     poster_path: string
     release_date: string
+    releases: { countries: ClassificationRequest[] }
+    classification: ClassificationRequest
+    runtime: number
     title: string
     video: boolean
-    vote_average: number
-    vote_count: number
-    
 }

@@ -1,6 +1,6 @@
-import { formatApiResponse } from "."
+import { formatApiResponse } from "../helpers"
 import config from "../config/config"
-import { MovieRequest } from "../models"
+import { Movie, MovieRequest } from "../models"
 
 interface Response {
     dates: {
@@ -22,6 +22,6 @@ export const getRecentMovies = async (page: number) => {
     })
 
     const response: Response = await res.json()
-    const movies = formatApiResponse(response.results)
+    const movies: Movie[] = formatApiResponse(response.results)
     return movies
 }

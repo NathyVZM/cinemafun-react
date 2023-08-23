@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './Home.sass'
 import { useEffect } from 'react'
 import { useFetch } from '../../core/hooks/useFetch'
-import { MovieCard } from '../../components'
+import { Carousel, MovieCard } from '../../components'
 
 export const Home = () => {
-    const { movies, getMovies } = useFetch()
+    const { movies, slides, previews, getMovies } = useFetch()
 
     useEffect(() => {
         getMovies()
@@ -13,8 +14,11 @@ export const Home = () => {
     return (
         <main id='main'>
             <section>
+                <Carousel slides={slides} />
+            </section>
+            <section>
                 {
-                    movies.map(movie => (
+                    previews.map(movie => (
                         <MovieCard movie={movie} key={movie.id} />
                     ))
                 }

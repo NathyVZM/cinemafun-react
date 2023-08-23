@@ -1,22 +1,18 @@
+@import '../../styles/variables'
+@import '../../styles/mixins'
+
 #main
-    width: 86%
+    width: 85.3%
     float: right
-    display: flex
-    justify-content: flex-start
-    align-items: stretch
-    flex-flow: column wrap
-    gap: 2vmax
+    @include flex(flex-start, stretch, column, wrap, 2rem)
     position: relative
+    padding-right: 1.9rem
 
     & > section
         width: 100%
 
     & > .main-header
-        display: flex
-        justify-content: flex-start
-        align-items: center
-        flex-flow: row wrap
-        gap: 1em
+        @include flex(flex-start, center, row, wrap, 1rem)
 
     & > .main-header i
         font-size: 2em
@@ -26,9 +22,5 @@
         font-size: 2em
         line-height: 1
 
-    & > section:first-child
-        display: flex
-        justify-content: flex-start
-        align-items: flex-start
-        flex-flow: row wrap
-        gap: 2vmax
+    & > section:last-child
+        @include flex(flex-start, flex-start, row, wrap, 2rem)

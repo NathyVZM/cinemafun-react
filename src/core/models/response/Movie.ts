@@ -1,10 +1,9 @@
-import { Genre } from ".."
+import { Cast, Genre, Classification } from ".."
 
 export interface Movie {
-    adult: boolean
     backdropPath: string
+    credits: { cast: Cast[] }
     genres: Genre[]
-    genreIds: number[]
     id: number
     originalLanguage: string
     originalTitle: string
@@ -12,8 +11,8 @@ export interface Movie {
     popularity: number
     posterPath: string
     releaseDate: string
+    classification: Classification
+    runtime: number
     title: string
     video: boolean
-    voteAverage: number
-    voteCount: number
 }

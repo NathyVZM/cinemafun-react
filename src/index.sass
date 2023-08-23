@@ -19,11 +19,24 @@
   transition: all 0.2s ease
   color: $primary-text
 
+h1, h2, p, span, i
+  margin: 0
+  padding: 0
+
+ul, li
+  list-style-type: none
+  padding: 0
+
+html, body
+  width: 100%
+
 body
   background-color: $background
   padding: 2rem
+  padding-right: 0
   position: relative
-  
+  overflow: auto
+
   &::-webkit-scrollbar
     width: 0.5em
     border-radius: 2em
@@ -31,8 +44,6 @@ body
 
   &::-webkit-scrollbar-track
     border-radius: 2em
-    background-color: transparent
-    
 
   &::-webkit-scrollbar-thumb
     background-color: rgba(142, 146, 170, 0.3)
@@ -67,3 +78,17 @@ body
   > div
     padding: 0.6rem 1rem
     @include flex(center, center)
+
+.button
+  background-color: $primary
+  border-radius: 5em
+  @include flex(center, center, row, nowrap, 0.5rem)
+  border: none
+  outline: none
+  transition: background-color 0.3s ease
+  color: $background
+  font-weight: 500 !important
+  text-decoration: none
+
+  &:hover
+    background-color: #ff1a9c

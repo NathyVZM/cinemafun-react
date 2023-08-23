@@ -1,0 +1,50 @@
+@import '../../styles/mixins'
+    
+.carousel,
+.carousel-inner
+    @include size(100%, 35rem)
+    border-radius: 1.5rem
+
+.carousel-item > img
+    @include size(100%, 35rem)
+    object-fit: cover
+    object-position: center
+
+.carousel-caption
+    left: 5% !important
+    right: 0% !important
+    @include flex(flex-start, flex-end, row, wrap, 1rem)
+    z-index: 1
+
+    &::before
+        content: ""
+        position: absolute
+        bottom: -1.25rem
+        left: -15%
+        background: linear-gradient(to top, black, transparent)
+        @include size(100vw, 30vh)
+        border-radius: 0 0 1.5rem 1.5rem
+        z-index: -1
+
+    & img
+        @include size(10rem, 15rem)
+        border-radius: 1.2rem
+        position: relative
+        object-fit: cover
+
+    & div
+        @include flex(center, flex-start, column, wrap)
+
+    & div h2
+        font-size: 2rem
+
+    & div h3
+        color: #ccd5ffcc
+        font-size: 1.5rem
+
+    & .button
+        @include size(15rem, 3rem)
+        font-weight: 500
+        font-size: 1.2em
+        position: relative
+        z-index: 100

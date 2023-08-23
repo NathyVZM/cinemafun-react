@@ -1,5 +1,6 @@
 import './MovieCard.sass'
 import { Movie } from '../../core/models'
+import { getClassificationClass } from '../../core/helpers'
 
 interface MovieCard {
     movie: Movie
@@ -12,7 +13,7 @@ export const MovieCard = ({ movie }: MovieCard) => {
             <section>
                 <p>{movie.title}</p>
                 <p className="subtitle">{movie.genres.map(genre => genre.name).join('/')}</p>
-                {/* <p className="subtitle">Clasificación: <span className="${renderClasification(movie.clasification)}">${movie.clasification}</span></p> */}
+                <p className="subtitle">Clasificación: <span className={getClassificationClass(movie.classification?.certification || 'R')}>{movie.classification?.certification || 'R'}</span></p>
             </section>
         </figure>
     )
