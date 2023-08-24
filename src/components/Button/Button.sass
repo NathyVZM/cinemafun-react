@@ -1,0 +1,16 @@
+@import '../../styles/variables'
+@import '../../styles/mixins'
+    
+#button
+  background-color: $primary
+  border-radius: 5em
+  @include flex(center, center, row, nowrap, 0.5rem)
+  border: none
+  outline: none
+  transition: background-color 0.3s ease
+  color: $background
+  font-weight: 500 !important
+  text-decoration: none
+
+  &:hover
+    background-color: darken($primary, 10%)

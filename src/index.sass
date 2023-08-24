@@ -23,6 +23,9 @@ h1, h2, p, span, i
   margin: 0
   padding: 0
 
+a
+  text-decoration: none
+
 ul, li
   list-style-type: none
   padding: 0
@@ -78,17 +81,3 @@ body
   > div
     padding: 0.6rem 1rem
     @include flex(center, center)
-
-.button
-  background-color: $primary
-  border-radius: 5em
-  @include flex(center, center, row, nowrap, 0.5rem)
-  border: none
-  outline: none
-  transition: background-color 0.3s ease
-  color: $background
-  font-weight: 500 !important
-  text-decoration: none
-
-  &:hover
-    background-color: #ff1a9c

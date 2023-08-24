@@ -13,7 +13,7 @@
 .carousel-caption
     left: 5% !important
     right: 0% !important
-    @include flex(flex-start, flex-end, row, wrap, 1rem)
+    @include flex(flex-start, flex-end, row, wrap, 1.2rem)
     z-index: 1
 
     &::before
@@ -27,7 +27,7 @@
         z-index: -1
 
     & img
-        @include size(10rem, 15rem)
+        @include size(11.5rem, 18rem)
         border-radius: 1.2rem
         position: relative
         object-fit: cover
@@ -42,8 +42,8 @@
         color: #ccd5ffcc
         font-size: 1.5rem
 
-    & .button
-        @include size(15rem, 3rem)
+    & button
+        @include size(18rem, 3.5rem)
         font-weight: 500
         font-size: 1.2em
         position: relative

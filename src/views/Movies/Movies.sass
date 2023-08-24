@@ -1,0 +1,25 @@
+@import '../../styles/mixins'
+    
+#movies-main
+    width: 85.3%
+    float: right
+    @include flex(flex-start, stretch, column, wrap, 2rem)
+    position: relative
+    padding-right: 1.9rem
+
+    & > section
+        width: 100%
+
+    & > .main-header
+        @include flex(flex-start, center, row, wrap, 1rem)
+
+    & > .main-header i
+        font-size: 2em
+        color: var(--primary)
+
+    & > .main-header h2
+        font-size: 2em
+        line-height: 1
+
+    & > section:nth-child(2)
+        @include flex(flex-start, flex-start, row, wrap, 2rem)

@@ -1,4 +1,5 @@
 import './Sidebar.sass'
+import { Link } from 'wouter'
 import { House, FilmReel } from '@phosphor-icons/react'
 
 export const Sidebar = () => {
@@ -6,12 +7,16 @@ export const Sidebar = () => {
         <aside id='aside'>
             <ul>
                 <li>
-                    <House size={20} color='#ff4ab0' weight="duotone" />
-                    <span>Inicio</span>
+                    <Link href='/'>
+                        <House size={20} weight="duotone" />
+                        <span>Inicio</span>
+                    </Link>
                 </li>
                 <li>
-                    <FilmReel size={20} color='#ff4ab0' weight="duotone" />
-                    <span>Peliculas</span>
+                    <Link href='movies'>
+                        <FilmReel size={20} weight="duotone" />
+                        <span>Peliculas</span>
+                    </Link>
                 </li>
             </ul>
         </aside>

@@ -3,7 +3,7 @@
 
 #aside
     @include flex(flex-start, stretch, column, nowrap)
-    width: 14%
+    width: 13%
     float: left
     position: sticky
     top: 8rem
@@ -15,7 +15,7 @@
         flex: 1
         @include flex(flex-start, stretch, column, nowrap, 1rem)
 
-        > li
+        & a
             cursor: pointer
             background-color: transparent
             border-radius: 1rem
@@ -23,10 +23,15 @@
             font-weight: 600
             transition: color 0.2s ease, background-color 0.2s ease
             @include flex(flex-start, center, row, wrap, 1rem)
+            
+            > svg
+                fill: $primary
 
             &:hover
                 background-color: $primary
-            
-            &:hover > *
-                color: $background
                 
+                > span
+                    color: $background
+
+                > svg
+                    fill: $background

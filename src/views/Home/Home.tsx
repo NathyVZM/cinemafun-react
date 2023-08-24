@@ -5,14 +5,14 @@ import { useFetch } from '../../core/hooks/useFetch'
 import { Carousel, MovieCard } from '../../components'
 
 export const Home = () => {
-    const { movies, slides, previews, getMovies } = useFetch()
+    const { slides, previews, getMovies } = useFetch()
 
     useEffect(() => {
         getMovies()
     }, [])
     
     return (
-        <main id='main'>
+        <main id='home-main'>
             <section>
                 <Carousel slides={slides} />
             </section>

@@ -1,6 +1,7 @@
 import './Carousel.sass'
 import { Movie } from '../../core/models'
 import { PlayCircle } from '@phosphor-icons/react'
+import { Button } from '..'
 
 interface Carousel {
     slides: Movie[]
@@ -18,10 +19,11 @@ export const Carousel = ({ slides }: Carousel) => {
                             <div>
                                 <h2>{movie.title}</h2>
                                 <h3>{movie.originalTitle || ''}</h3>
-                                <button className="button">
-                                    Mira el trailer
-                                    <PlayCircle size={24} weight='duotone' color='#0f0f15' />
-                                </button>
+                                <Button
+                                    label='Mira el trailer'
+                                    showIcon={true}
+                                    icon={<PlayCircle size={26} weight='duotone' color='#0f0f15' />}
+                                />
                             </div>
                         </div>
                     </div>
