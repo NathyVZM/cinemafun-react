@@ -1,4 +1,4 @@
-import { Cast, Genre, ClassificationRequest } from ".."
+import { Cast, Genre, ClassificationRequest, Company, Country, CompanyRequest, CountryRequest } from ".."
 
 export interface MovieRequest {
     backdrop_path: string
@@ -16,4 +16,8 @@ export interface MovieRequest {
     runtime: number
     title: string
     video: boolean
+    production_companies: CompanyRequest[]
+    production_countries: CountryRequest[]
+    company: Company
+    country: Country
 }

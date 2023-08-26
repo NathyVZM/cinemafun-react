@@ -1,5 +1,5 @@
 const CLASSIFICATIONS: { [key: string]: string[] } = {
-    'friendly': ['A', 'PG', '12'],
+    'friendly': ['A', 'PG', '12', 'G'],
     'teen': ['PG-13', '16']
 }
 

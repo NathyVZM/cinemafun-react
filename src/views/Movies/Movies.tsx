@@ -2,11 +2,11 @@
 import './Movies.sass'
 import { useState, useEffect } from 'react'
 import { MovieCard } from '../../components'
-import { useFetch } from '../../core/hooks/useFetch'
+import { useFetchMovies } from '../../core/hooks'
 import { FilmReel } from '@phosphor-icons/react'
 
 export const Movies = () => {
-    const { movies, getMovies } = useFetch()
+    const { movies, getMovies } = useFetchMovies()
     const [page, setPage] = useState(1)
 
     useEffect(() => {

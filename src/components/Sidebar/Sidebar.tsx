@@ -13,7 +13,7 @@ export const Sidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href='movies'>
+                    <Link href='/movies'>
                         <FilmReel size={20} weight="duotone" />
                         <span>Peliculas</span>
                     </Link>

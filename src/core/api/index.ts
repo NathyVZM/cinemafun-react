@@ -1,3 +1,2 @@
-export * from './getGenres'
-export * from './getMovieById'
+export * from './getMovieDetails'
 export * from './getRecentMovies'

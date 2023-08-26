@@ -1,4 +1,4 @@
-import { Cast, Genre, Classification } from ".."
+import { Cast, Genre, Classification, Company, Country } from ".."
 
 export interface Movie {
     backdropPath: string
@@ -15,4 +15,8 @@ export interface Movie {
     runtime: number
     title: string
     video: boolean
+    tagline: string
+    status: string
+    company: Company
+    country: Country
 }

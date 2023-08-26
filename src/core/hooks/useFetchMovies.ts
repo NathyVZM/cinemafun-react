@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { Movie } from '../models'
-import { getMovieById, getRecentMovies } from '../api'
+import { getMovieDetails, getRecentMovies } from '../api'
 
-export const useFetch = () => {
+export const useFetchMovies = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [slides, setSlides] = useState<Movie[]>([])
     const [previews, setPreviews] = useState<Movie[]>([])
@@ -12,12 +12,12 @@ export const useFetch = () => {
         try {
             const recentMovies = await getRecentMovies(page)
 
-            const fullMovies = recentMovies.map(async _movie => await getMovieById(_movie.id))
+            const fullMovies = recentMovies.map(async _movie => await getMovieDetails(_movie.id))
 
             const _movies = await Promise.all(fullMovies)
             setMovies(_movies)
 
-            const _slides = [..._movies].sort(() => Math.random() - 0.5).slice(0, 3)
+            const _slides = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
             setSlides(_slides)
 
             const _previews = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
