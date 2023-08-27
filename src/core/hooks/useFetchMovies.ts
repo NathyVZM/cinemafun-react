@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { Movie } from '../models'
-import { getMovieDetails, getRecentMovies } from '../api'
+import { getMovieDetails, getRecentMovies, searchMovies } from '../api'
 
 export const useFetchMovies = () => {
     const [movies, setMovies] = useState<Movie[]>([])
@@ -9,14 +9,12 @@ export const useFetchMovies = () => {
     const [previews, setPreviews] = useState<Movie[]>([])
     const [totalPages, setTotalPages] = useState<number>(0)
 
-    const getMovies = async(page: number = 1) => {
+    const getMovies = async (page: number = 1, search: string = '') => {
         try {
             const { movies: recentMovies, totalPages: _totalPages } = await getRecentMovies(page)
             setTotalPages(_totalPages)
 
-            const fullMovies = recentMovies.map(async _movie => await getMovieDetails(_movie.id))
-
-            const _movies = await Promise.all(fullMovies)
+            const _movies = await addMovieDetails(recentMovies)
             setMovies(_movies)
 
             const _slides = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
@@ -24,9 +22,20 @@ export const useFetchMovies = () => {
 
             const _previews = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
             setPreviews(_previews)
+
+            if (search) {
+                const { movies: _movies, totalPages: _totalPages } = await searchMovies(search, page)
+                setMovies(await addMovieDetails(_movies))
+                setTotalPages(_totalPages)
+            }
         } catch (error: string | undefined | any) {
             throw new Error(error)
         }
+    }
+
+    const addMovieDetails = async (_movies: Movie[]) => {
+        const fullMovies = _movies.map(async _movie => await getMovieDetails(_movie.id))
+        return await Promise.all(fullMovies)
     }
 
     return {

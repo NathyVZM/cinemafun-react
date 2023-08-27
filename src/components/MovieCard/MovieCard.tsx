@@ -15,7 +15,7 @@ export const MovieCard = ({ movie }: MovieCard) => {
                 <section>
                     <p>{movie.title}</p>
                     <p className="subtitle">{movie.genres.map(genre => genre.name).join('/')}</p>
-                    <p className="subtitle">Clasificación: <span className={getClassificationClass(movie.classification?.certification || 'R')}>{movie.classification?.certification || 'R'}</span></p>
+                    <p className="subtitle">Clasificación: <span className={getClassificationClass(movie.classification?.certification || 'NR')}>{movie.classification?.certification || 'NR'}</span></p>
                 </section>
             </a>
         </Link>

@@ -10,7 +10,7 @@ interface Button {
 
 export const Button = ({ label, icon, showIcon }: Button) => {
     return (
-        <button id='button'>
+        <button id='button' popovertarget="trailer-dialog">
             { label }
             { showIcon && icon }
         </button>

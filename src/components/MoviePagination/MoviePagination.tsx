@@ -10,7 +10,6 @@ interface MoviePagination {
 }
 
 export const MoviePagination = ({ totalPages, page, setPage }: MoviePagination) => {
-    // const [pageCount, setPageCount] = useState(7);
     const [pages, setPages] = useState<number[]>([])
     const [isGoingForward, setIsGoingForward] = useState<boolean>(true);
 
@@ -32,7 +31,6 @@ export const MoviePagination = ({ totalPages, page, setPage }: MoviePagination) 
         if (isGoingForward && page <= pages[pages.length - 1]) return;
 
         const _pages = Array.from({ length: totalPages }, (_, i) => i + 1).slice(start, end);
-        console.log(start, page, pages, isGoingForward)
         setPages(_pages);
     }
 
@@ -42,8 +40,8 @@ export const MoviePagination = ({ totalPages, page, setPage }: MoviePagination) 
 
     return (
         <Pagination data-bs-theme='dark' size='lg'>
-            <Pagination.First onClick={() => selectPage(1)} disabled={page === 1} />
-            <Pagination.Prev onClick={prevPage} disabled={page === 1} />
+            <Pagination.First onClick={() => selectPage(1)} disabled={page === 1 || totalPages === 0} />
+            <Pagination.Prev onClick={prevPage} disabled={page === 1 || totalPages === 0} />
 
             {pages.map(_page => (
                 <Pagination.Item
@@ -54,8 +52,8 @@ export const MoviePagination = ({ totalPages, page, setPage }: MoviePagination) 
                 </Pagination.Item>
             ))}
 
-            <Pagination.Next onClick={nextPage} disabled={page === totalPages} />
-            <Pagination.Last onClick={() => selectPage(totalPages)} disabled={page === totalPages} />
+            <Pagination.Next onClick={nextPage} disabled={page === totalPages || totalPages === 0} />
+            <Pagination.Last onClick={() => selectPage(totalPages)} disabled={page === totalPages || totalPages === 0} />
         </Pagination>
     );
 
