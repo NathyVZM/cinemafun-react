@@ -23,5 +23,8 @@ export const getRecentMovies = async (page: number) => {
 
     const response: Response = await res.json()
     const movies: Movie[] = formatApiResponse(response.results)
-    return movies
+    return {
+        movies,
+        totalPages: response.total_pages
+    }
 }

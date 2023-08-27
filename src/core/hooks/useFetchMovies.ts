@@ -7,10 +7,12 @@ export const useFetchMovies = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [slides, setSlides] = useState<Movie[]>([])
     const [previews, setPreviews] = useState<Movie[]>([])
+    const [totalPages, setTotalPages] = useState<number>(0)
 
     const getMovies = async(page: number = 1) => {
         try {
-            const recentMovies = await getRecentMovies(page)
+            const { movies: recentMovies, totalPages: _totalPages } = await getRecentMovies(page)
+            setTotalPages(_totalPages)
 
             const fullMovies = recentMovies.map(async _movie => await getMovieDetails(_movie.id))
 
@@ -31,6 +33,7 @@ export const useFetchMovies = () => {
         movies,
         slides,
         previews,
+        totalPages,
         getMovies
     }
 }
