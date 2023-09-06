@@ -5,12 +5,12 @@ interface Button {
     label: string
     icon: ReactNode
     showIcon: boolean
-    // onClick: () => void
+    onClickFunction: () => void
 }
 
-export const Button = ({ label, icon, showIcon }: Button) => {
+export const Button = ({ label, icon, showIcon, onClickFunction }: Button) => {
     return (
-        <button id='button' popovertarget="trailer-dialog">
+        <button id='button' onClick={onClickFunction}>
             { label }
             { showIcon && icon }
         </button>

@@ -1,21 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import './MovieDetails.sass'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRoute } from 'wouter'
 import { useFetchMovieById } from '../../core/hooks'
-import { PlayCircle, FilmReel, User } from '@phosphor-icons/react'
+import { PlayCircle, FilmReel, User, YoutubeLogo } from '@phosphor-icons/react'
 import { Button, Trailer } from '../../components'
 import { getClassificationClass, getMovieStatus, getRandomColor } from '../../core/helpers'
 
 export const MovieDetails = () => {
     const [_match, params] = useRoute('/movies/:id')
     const { movie, getMovieById } = useFetchMovieById()
+    const [trailer, setTrailer] = useState(false)
     
     useEffect(() => {
         scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         getMovieById(Number(params?.id))
     }, [])
+
+    // const openTrailer = () => setTrailer(true)
+    // const closeTrailer = () => setTrailer(false)
+    const toggleTrailer = () => setTrailer(!trailer)
 
     return (
         <>
@@ -60,7 +65,15 @@ export const MovieDetails = () => {
                                     label='Mira el trailer'
                                     showIcon={true}
                                     icon={<PlayCircle size={26} weight='duotone' color='#0f0f15' />}
+                                    onClickFunction={toggleTrailer}
                                 />
+                                {
+                                    movie?.trailer?.key &&
+                                    <a href={`https://www.youtube.com/watch?v=${movie.trailer.key}`} target='_blank' className='button'>
+                                        Ver en YouTube
+                                        <YoutubeLogo size={26} weight='duotone' color='#0f0f15' />
+                                    </a>
+                                }
                             </div>
                         </header>
 
@@ -127,7 +140,11 @@ export const MovieDetails = () => {
                 </section>
             </main>
 
-            <Trailer url={`https://www.youtube.com/embed/${movie?.trailer?.key}`} />
+            <Trailer
+                url={`https://www.youtube.com/embed/${movie?.trailer?.key}`}
+                isOpened={trailer}
+                close={toggleTrailer}
+            />
         </>
     )
 }

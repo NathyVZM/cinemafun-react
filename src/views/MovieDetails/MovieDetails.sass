@@ -183,9 +183,6 @@
         flex-flow: column wrap
         gap: 4vh
 
-        & > header
-            width: 100%
-
         & > header > div
             display: flex
             justify-content: space-between
@@ -196,8 +193,11 @@
             font-size: 1.5em
 
         & > header
+            width: 100%
+
             h3
                 font-size: 1em
+
             a, button
                 width: 10em
                 font-size: 0.95em
@@ -228,3 +228,17 @@
 
     .movie-info-table th
         font-size: 1em
+
+.button
+    background-color: $secondary
+    border-radius: 5em
+    @include flex(center, center, row, nowrap, 0.5rem)
+    border: none
+    outline: none
+    transition: background-color 0.3s ease
+    color: $background
+    font-weight: 500 !important
+    text-decoration: none
+
+    &:hover
+        background-color: darken($secondary, 10%)

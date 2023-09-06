@@ -1,4 +1,63 @@
+@import '../../styles/variables'
+@import '../../styles/mixins'
+
 #trailer-dialog
-    top: 30%
-    left: 20%
+    position: fixed
     border: none
+    outline: none
+    border-radius: 3rem
+    @include flex(center, center)
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: $container
+    padding: 3rem
+    opacity: 0
+    visibility: hidden
+    transition: all 0.2s ease
+    z-index: 1000
+    backdrop-filter: blur(2em)
+
+    &[open]
+        opacity: 1
+        visibility: visible
+
+    > iframe
+        width: calc( 560px * 1.7 )
+        height: calc( 315px * 1.7 )
+        border-radius: 3rem
+
+    > button
+        border: none
+        outline: none
+        position: absolute
+        top: 1.4rem
+        right: 1.4rem
+        background-color: $container
+        border-radius: 5rem
+        padding: 0.3rem
+        @include flex(center, center, row, wrap)
+
+@media screen and (orientation: portrait)
+    dialog
+        width: 92vw
+        height: 40em
+        padding: 2em
+        gap: 1em
+
+    iframe
+        object-fit: contain
+        width: 80vw
+        height: 30vh
+
+    #trailer-dialog
+        width: 92vw
+        height: 40em
+        padding: 2em
+        gap: 1em
+        @include flex(center, center)
+        padding: 8vw
+
+        & button
+            font-size: 0.9em
+            padding: 0.3em
