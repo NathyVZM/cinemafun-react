@@ -8,21 +8,23 @@ export const useFetchMovies = () => {
     const [slides, setSlides] = useState<Movie[]>([])
     const [previews, setPreviews] = useState<Movie[]>([])
     const [totalPages, setTotalPages] = useState<number>(0)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     const getMovies = async (page: number = 1, search: string = '') => {
         try {
+            setIsLoading(true)
             const { movies: recentMovies, totalPages: _totalPages } = await getRecentMovies(page)
             setTotalPages(_totalPages)
-
+    
             const _movies = await addMovieDetails(recentMovies)
             setMovies(_movies)
-
+    
             const _slides = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
             setSlides(_slides)
-
+    
             const _previews = [..._movies].sort(() => Math.random() - 0.5).slice(0, 5)
             setPreviews(_previews)
-
+    
             if (search) {
                 const { movies: _movies, totalPages: _totalPages } = await searchMovies(search, page)
                 setMovies(await addMovieDetails(_movies))
@@ -30,8 +32,11 @@ export const useFetchMovies = () => {
             }
         } catch (error: string | undefined | any) {
             throw new Error(error)
+        } finally {
+            setIsLoading(false)
         }
     }
+    
 
     const addMovieDetails = async (_movies: Movie[]) => {
         const fullMovies = _movies.map(async _movie => await getMovieDetails(_movie.id))
@@ -43,6 +48,7 @@ export const useFetchMovies = () => {
         slides,
         previews,
         totalPages,
+        isLoading,
         getMovies
     }
 }

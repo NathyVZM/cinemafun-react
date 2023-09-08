@@ -1,6 +1,13 @@
 @import 'styles/mixins'
 @import 'styles/variables'
 
+#root
+  position: relative
+  width: 100%
+
+  @media screen and (orientation: portrait)
+    @include flex(flex-start, stretch, column, nowrap, 1rem)
+
 #lights
   @include size(100%, 100%)
   position: fixed

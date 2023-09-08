@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import { useRoute } from 'wouter'
 import { useFetchMovieById } from '../../core/hooks'
 import { PlayCircle, FilmReel, User, YoutubeLogo } from '@phosphor-icons/react'
-import { Button, Trailer } from '../../components'
+import { Button, Loading, Trailer } from '../../components'
 import { getClassificationClass, getMovieStatus, getRandomColor } from '../../core/helpers'
 
 export const MovieDetails = () => {
     const [_match, params] = useRoute('/movies/:id')
-    const { movie, getMovieById } = useFetchMovieById()
+    const { movie, isLoading, getMovieById } = useFetchMovieById()
     const [trailer, setTrailer] = useState(false)
     
     useEffect(() => {
@@ -18,8 +18,6 @@ export const MovieDetails = () => {
         getMovieById(Number(params?.id))
     }, [])
 
-    // const openTrailer = () => setTrailer(true)
-    // const closeTrailer = () => setTrailer(false)
     const toggleTrailer = () => setTrailer(!trailer)
 
     return (
@@ -145,6 +143,8 @@ export const MovieDetails = () => {
                 isOpened={trailer}
                 close={toggleTrailer}
             />
+
+            { isLoading && <Loading /> }
         </>
     )
 }

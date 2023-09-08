@@ -9,6 +9,13 @@
     top: 0rem
     backdrop-filter: blur(2rem)
     z-index: 10
-    
+
     > section:last-child
         flex: 1
+
+    @media screen and (orientation: portrait)
+        padding-block: 0
+        padding-inline: 2rem
+        flex-direction: column
+        gap: 2rem
+        margin: 0
