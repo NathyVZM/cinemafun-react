@@ -1,5 +1,6 @@
 @import '../../styles/variables'
 @import '../../styles/mixins'
+@import '../../styles/breakpoints'
     
 .movie
     flex: auto
@@ -14,6 +15,9 @@
     cursor: pointer
     margin: 0
 
+    @media screen and ($desktop <= width <= $extra-large-desktop)
+        min-height: 35rem
+
     &:hover
         scale: 1.07
         rotate: -1.3deg
@@ -25,6 +29,9 @@
         border-radius: 1.5rem
         object-fit: cover
         translate: 0 0 1px
+
+        @media screen and ($desktop <= width <= $large-desktop)
+            flex-basis: 29rem
 
     & section
         width: 100%

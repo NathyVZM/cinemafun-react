@@ -17,6 +17,7 @@ export const MovieDetails = () => {
     useEffect(() => {
         scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         getMovieById(Number(params?.id))
+        console.log(movie)
     }, [])
 
     const toggleTrailer = (key: string) => setTrailer({ ...trailer, key: key, isOpened: !trailer.isOpened })
@@ -84,7 +85,69 @@ export const MovieDetails = () => {
                         }
                         <div>
                             <h3>Detalles</h3>
-                            <table className="movie-info-table">
+                            <dl id='details'>
+                                <div>
+                                    <dt>Géneros</dt>
+                                    <dd>
+                                        {
+                                            movie?.genres?.map(genre => (
+                                                <span className='genre' key={genre.id}>{genre?.name}</span>
+                                            ))
+                                        }
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt>Clasificación</dt>
+                                    <dd className={getClassificationClass(movie.classification?.certification || 'NR')}>{movie?.classification?.certification || 'NR'}</dd>
+                                </div>
+
+                                <div>
+                                    <dt>Duración</dt>
+                                    <dd>{movie?.runtime} minutos</dd>
+                                </div>
+
+                                <div>
+                                    <dt>Estado</dt>
+                                    <dd>{getMovieStatus(movie?.status)}</dd>
+                                </div>
+
+                                <div>
+                                    <dt>Fecha de estreno</dt>
+                                    <dd>{new Date(movie?.releaseDate).toLocaleDateString('es', { dateStyle: 'long' })}</dd>
+                                </div>
+
+                                <div>
+                                    {
+                                        movie.country && (
+                                            <>
+                                                <dt>País de producción</dt>
+                                                <dd>{movie?.country?.name}</dd>
+                                            </>
+                                        )
+                                    }
+                                </div>
+
+                                <div>
+                                    {
+                                        movie.company && (
+                                            <>
+                                                <dt className='d-none d-md-flex'>Compañía de producción</dt>
+                                                <dd className={`company ${getRandomColor()}`}>
+                                                    {
+                                                        movie?.company?.logoPath ?
+                                                            <img src={`https://image.tmdb.org/t/p/original${movie?.company?.logoPath}`} alt={movie?.company?.name} />
+                                                            : <FilmReel size={48} weight='duotone' />
+                                                    }
+                                                    <span>{movie?.company?.name}</span>
+                                                </dd>
+                                            </>
+                                        )
+                                    }
+                                </div>
+                            </dl>
+
+                            {/* <table className="movie-info-table">
                                 <tr id="days">
                                     <th>Géneros</th>
                                     {
@@ -96,7 +159,7 @@ export const MovieDetails = () => {
                                 </tr>
                                 <tr>
                                     <th>Clasificación</th>
-                                    <td className={getClassificationClass(movie.classification?.certification || 'R')}>{movie?.classification?.certification || 'R'}</td>
+                                    <td className={getClassificationClass(movie.classification?.certification || 'NR')}>{movie?.classification?.certification || 'NR'}</td>
                                 </tr>
                                 <tr>
                                     <th>Duración</th>
@@ -111,19 +174,19 @@ export const MovieDetails = () => {
                                     <td>{new Date(movie?.releaseDate).toLocaleDateString('es', { dateStyle: 'long' })}</td>
                                 </tr>
                                 {
-                                    movie.company &&
+                                    movie.country &&
                                     <tr>
-                                        <th>Pais de produccion</th>
+                                        <th>País de producción</th>
                                         <td className='company'>{movie?.country?.name}</td>
                                     </tr>
                                 }
                                 {
-                                    movie.country &&
+                                    movie.company &&
                                     <tr>
-                                        <th>Compania de produccion</th>
+                                        <th>Compañía de producción</th>
                                         <td className={`company ${getRandomColor()}`}>
                                             {
-                                                movie.company.logoPath ?
+                                                movie?.company?.logoPath ?
                                                     <img src={`https://image.tmdb.org/t/p/original${movie?.company?.logoPath}`} alt={movie?.company?.name} />
                                                     : <FilmReel size={48} weight='duotone' />
                                             }
@@ -131,7 +194,7 @@ export const MovieDetails = () => {
                                         </td>
                                     </tr>
                                 }
-                            </table>
+                            </table> */}
                         </div>
                     </main>
                 </div>

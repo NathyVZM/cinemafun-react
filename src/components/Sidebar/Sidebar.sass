@@ -1,5 +1,6 @@
 @import '../../styles/variables'
 @import '../../styles/mixins'
+@import '../../styles/breakpoints'
 
 #aside
     @include flex(flex-start, stretch, column, nowrap)
@@ -8,6 +9,12 @@
     position: sticky
     top: 8rem
 
+    @media screen and ($desktop <= width <= $large-desktop)
+        width: 20%
+
+    @media screen and ($large-desktop <= width <= $extra-large-desktop)
+        width: 15%
+        
     > ul
         list-style-type: none
         margin: 0

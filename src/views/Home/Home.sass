@@ -1,5 +1,6 @@
 @import '../../styles/variables'
 @import '../../styles/mixins'
+@import '../../styles/breakpoints'
 
 #home-main
     width: 85.3%
@@ -25,8 +26,18 @@
     & > section:last-child
         @include flex(flex-start, flex-start, row, wrap, 2rem)
 
+        @media screen and (width <= $extra-large-desktop)
+            &::after
+                content: ''
+                flex: auto
+                width: 17rem
+            
+
     @media screen and (orientation: portrait)
         float: none
         width: 100%
         padding-inline: 2rem
+    
+    @media screen and ($desktop <= width <= $large-desktop)
+        width: 77%
         

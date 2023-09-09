@@ -1,11 +1,18 @@
 @import '../../styles/mixins'
-    
+@import '../../styles/breakpoints'
+
 #movies-main
     width: 85.3%
     float: right
     @include flex(flex-start, stretch, column, wrap, 2rem)
     position: relative
     padding-right: 1.9rem
+
+    @media screen and (orientation: landscape) and ($desktop <= width <= $large-desktop)
+        width: 77%
+
+    @media screen and (orientation: landscape) and ($large-desktop <= width <= $extra-large-desktop)
+        width: 82.5%
 
     & > section
         width: 100%
@@ -18,10 +25,21 @@
             line-height: 1
 
             @media screen and (orientation: portrait)
-            font-size: 1.5rem
+                font-size: 1.5rem
 
     & > section:nth-child(2)
         @include flex(flex-start, flex-start, row, wrap, 2rem)
+
+        &::after
+            content: ""
+            flex: auto
+            width: 36rem
+
+        @media screen and (width <= $extra-large-desktop)
+            &::after
+                content: ""
+                flex: auto
+                width: 17rem
 
     & > section:last-child
         margin-top: 3rem
