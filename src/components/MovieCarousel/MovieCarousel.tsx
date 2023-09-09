@@ -16,7 +16,7 @@ export const MovieCarousel = ({ slides }: CarouselProps) => {
     const toggleTrailer = (key: string) => setTrailer({ ...trailer, key: key, isOpened: !trailer.isOpened })
 
     return (
-        <Carousel fade>
+        <Carousel fade indicators={innerWidth > 992}>
             {
                 slides.map(movie => (
                     <Carousel.Item interval={8000} key={movie.id}>

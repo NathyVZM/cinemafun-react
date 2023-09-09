@@ -45,10 +45,14 @@
         margin-top: 3rem
         @include flex(center, stretch)
 
+        @media screen and (orientation: portrait)
+            margin-top: 0
+            
+
     @media screen and (orientation: portrait)
         float: none
         width: 100%
-        padding-inline: 2rem
+        padding-inline: 2vh
         padding-top: 1rem
 
         & svg

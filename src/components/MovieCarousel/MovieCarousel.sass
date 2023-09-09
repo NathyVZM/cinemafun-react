@@ -1,20 +1,31 @@
 @import '../../styles/mixins'
-    
+@import '../../styles/breakpoints'
+
 .carousel,
 .carousel-inner
     @include size(100%, 35rem)
     border-radius: 1.5rem
+
+    @media screen and (orientation: portrait)
+        height: 35vh
 
 .carousel-item > img
     @include size(100%, 35rem)
     object-fit: cover
     object-position: center
 
+    @media screen and (orientation: portrait)
+        height: 35vh
+
 .carousel-caption
     left: 5% !important
     right: 0% !important
     @include flex(flex-start, flex-end, row, wrap, 1.2rem)
     z-index: 1
+
+    @media screen and (orientation: portrait)
+        padding: 0
+        gap: 1.4vh
 
     &::before
         content: ""
@@ -26,21 +37,42 @@
         border-radius: 0 0 1.5rem 1.5rem
         z-index: -1
 
+        @media screen and (orientation: portrait)
+            width: 200vw
+            height: 20vh
+
     & img
         @include size(11.5rem, 18rem)
         border-radius: 1.2rem
         position: relative
         object-fit: cover
 
+        @media screen and (orientation: portrait)
+            width: 13vh
+            height: 20vh
+            border-radius: 1rem
+
     & div
         @include flex(center, flex-start, column, wrap)
 
     & div h2
         font-size: 2rem
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+
+        @media screen and (orientation: portrait)
+            font-size: 2vh
+
+        @media screen and (width <= $phone)
+            max-width: 25vh
 
     & div h3
         color: #ccd5ffcc
         font-size: 1.5rem
+
+        @media screen and (orientation: portrait)
+            font-size: 1.5vh
 
     & button
         @include size(18rem, 3.5rem)
@@ -48,3 +80,13 @@
         font-size: 1.2em
         position: relative
         z-index: 100
+
+        @media screen and (orientation: portrait)
+            width: 18vh
+            height: 3.5vh
+            font-size: 1.3vh
+            line-height: 1
+
+            > svg
+                width: 1.7vh
+                width: 1.7vh

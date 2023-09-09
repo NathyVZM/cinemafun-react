@@ -9,6 +9,11 @@
     position: relative
     padding-right: 1.9rem
 
+    @media screen and (orientation: portrait)
+        float: none
+        width: 100%
+        padding-inline: 2vh
+
     @media screen and (orientation: landscape) and ($desktop <= width <= $large-desktop)
         width: 77%
 
@@ -41,11 +46,6 @@
             mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 10%)
             border-radius: 2rem 2rem 0 0
             object-position: center
-
-    @media screen and (orientation: portrait)
-        float: none
-        width: 100%
-        padding-inline: 2rem
 
 #movie-first
     @include flex(flex-start, stretch, column, wrap, 2rem)
@@ -110,8 +110,8 @@
         @include flex(flex-start, flex-start, column, wrap, 0.5rem)
         width: 100%
 
-        @media screen and (width <= $extra-large-desktop)
-            gap: 1rem
+        // @media screen and (width <= $extra-large-desktop)
+        //     gap: 1rem
 
         & h3
             font-size: 1rem
