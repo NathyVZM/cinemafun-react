@@ -1,9 +1,13 @@
 import './App.sass'
-import { Footer, Header, Sidebar } from './components'
-import { SearchProvider } from './core/hooks'
+import { useContext } from 'react'
+import { Footer, Header, Loading, Sidebar, Trailer } from './components'
+import { SearchProvider, TrailerContext, LoadingContext } from './core/context'
 import { Router } from './router'
 
 export const App = () => {
+  const { isLoading } = useContext(LoadingContext)
+  const { trailer } = useContext(TrailerContext)
+
   return (
     <SearchProvider>
       <div id="lights">
@@ -17,6 +21,13 @@ export const App = () => {
         <Sidebar />
         <Router />
         <Footer />
+
+        { isLoading && <Loading /> }
+
+        <Trailer
+          url={`https://www.youtube.com/embed/${trailer.key}`}
+          isOpened={trailer.isOpened}
+        />
     </SearchProvider>
   )
 }

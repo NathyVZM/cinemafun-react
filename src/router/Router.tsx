@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Route, Switch, Redirect, useLocation } from "wouter";
 import { Home, MovieDetails, Movies } from "../views";
-import { useSearchContext } from "../core/hooks";
+import { SearchContext } from "../core/context";
 
 export const Router = () => {
-    const { search, setCurrentView } = useSearchContext()
+    const { search, setCurrentView } = useContext(SearchContext)
     const [location, setLocation] = useLocation()
 
     useEffect(() => {

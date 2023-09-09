@@ -1,13 +1,18 @@
 import './Trailer.sass'
 import { X } from '@phosphor-icons/react'
+import { useContext } from 'react'
+import { TrailerContext } from '../../core/context'
 
 interface Trailer {
     url: string
     isOpened: boolean
-    close: () => void
 }
 
-export const Trailer = ({ url, isOpened, close }: Trailer) => {
+export const Trailer = ({ url, isOpened }: Trailer) => {
+    const { trailer, setTrailer } = useContext(TrailerContext)
+
+    const close = () => setTrailer({ ...trailer, key: '', isOpened: !trailer.isOpened })
+
     return (
         <dialog id="trailer-dialog" open={isOpened}>
             <button type="button" onClick={close}>

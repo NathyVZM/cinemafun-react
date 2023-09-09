@@ -39,7 +39,7 @@ export const MoviePagination = ({ totalPages, page, setPage }: MoviePagination) 
     const selectPage = (_page: number) => setPage(_page);
 
     return (
-        <Pagination data-bs-theme='dark' size='lg'>
+        <Pagination data-bs-theme='dark' size={innerWidth <= 450 ? 'sm' : 'lg'}>
             <Pagination.First onClick={() => selectPage(1)} disabled={page === 1 || totalPages === 0} />
             <Pagination.Prev onClick={prevPage} disabled={page === 1 || totalPages === 0} />
 

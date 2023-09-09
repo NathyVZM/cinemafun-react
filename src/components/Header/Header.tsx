@@ -1,9 +1,10 @@
 import './Header.sass'
-import { useSearchContext } from '../../core/hooks'
+import { useContext } from 'react'
 import { MagnifyingGlass, FilmSlate } from '@phosphor-icons/react'
+import { SearchContext } from '../../core/context'
 
 export const Header = () => {
-    const { search, setSearch } = useSearchContext()
+    const { search, setSearch } = useContext(SearchContext)
 
     const onSerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value)

@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Movies.sass'
-import { useState, useEffect } from 'react'
-import { Loading, MovieCard, MoviePagination } from '../../components'
-import { useFetchMovies, useSearchContext } from '../../core/hooks'
+import { useState, useEffect, useContext } from 'react'
+import { MovieCard, MoviePagination } from '../../components'
+import { useFetchMovies } from '../../core/hooks'
 import { FilmReel } from '@phosphor-icons/react'
+import { SearchContext } from '../../core/context'
 
 export const Movies = () => {
     const [page, setPage] = useState<number>(1)
     const [title, setTitle] = useState<string>('')
-    const { movies, totalPages, isLoading, getMovies } = useFetchMovies()
-    const { search, currentView } = useSearchContext()
+    const { movies, totalPages, getMovies } = useFetchMovies()
+    const { search, currentView } = useContext(SearchContext)
 
     useEffect(() => {
         getMovies(page, search)
@@ -18,29 +19,25 @@ export const Movies = () => {
     }, [page, search])
 
     return (
-        <>
-            <main id='movies-main'>
-                <section className="main-header">
-                    <FilmReel size={34} weight='duotone' color='#ff4ab0' />
-                    <h2>{title}</h2>
-                </section>
+        <main id='movies-main'>
+            <section className="main-header">
+                <FilmReel size={34} weight='duotone' color='#ff4ab0' />
+                <h2>{title}</h2>
+            </section>
 
-                <section>
-                    {movies.map(movie => (
-                        <MovieCard movie={movie} key={movie.id} />
-                    ))}
-                </section>
+            <section>
+                {movies.map(movie => (
+                    <MovieCard movie={movie} key={movie.id} />
+                ))}
+            </section>
 
-                <section>
-                    <MoviePagination
-                        page={page}
-                        setPage={setPage}
-                        totalPages={totalPages}
-                    />
-                </section>
-            </main>
-            
-            { isLoading && <Loading /> }
-        </>
+            <section>
+                <MoviePagination
+                    page={page}
+                    setPage={setPage}
+                    totalPages={totalPages}
+                />
+            </section>
+        </main>
     )
 }

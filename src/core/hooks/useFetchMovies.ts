@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Movie } from '../models'
 import { getMovieDetails, getRecentMovies, searchMovies } from '../api'
+import { LoadingContext } from '../context'
 
 export const useFetchMovies = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [slides, setSlides] = useState<Movie[]>([])
     const [previews, setPreviews] = useState<Movie[]>([])
     const [totalPages, setTotalPages] = useState<number>(0)
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const { setIsLoading } = useContext(LoadingContext)
 
     const getMovies = async (page: number = 1, search: string = '') => {
         try {
@@ -48,7 +49,6 @@ export const useFetchMovies = () => {
         slides,
         previews,
         totalPages,
-        isLoading,
         getMovies
     }
 }

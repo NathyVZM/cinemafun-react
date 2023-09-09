@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Movie } from "../models"
 import { getMovieDetails } from "../api"
+import { LoadingContext } from "../context"
 
 export const useFetchMovieById = () => {
     const [movie, setMovie] = useState<Movie>({} as Movie)
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const { setIsLoading } = useContext(LoadingContext)
 
     const getMovieById = async(movieId: number) => {
         try {
@@ -20,7 +21,6 @@ export const useFetchMovieById = () => {
 
     return {
         movie,
-        isLoading,
         getMovieById
     }
 }
