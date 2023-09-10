@@ -1,10 +1,13 @@
 @import '../../styles/variables'
+@import '../../styles/mixins'
 
 .pagination
     backdrop-filter: blur(5rem)
     border-radius: 10rem !important
 
     .page-link
+        height: 100%
+        
+        @include flex(center, center)
         span
             color: $tertiary
-    

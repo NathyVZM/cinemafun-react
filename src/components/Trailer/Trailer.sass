@@ -1,5 +1,6 @@
 @import '../../styles/variables'
 @import '../../styles/mixins'
+@import '../../styles/breakpoints'
 
 #trailer-dialog
     position: fixed
@@ -18,6 +19,16 @@
     z-index: 1000
     backdrop-filter: blur(2em)
 
+    @media screen and (width <= $desktop)
+        width: 96vw
+        height: 45vh
+        padding: 3vh
+
+    @media screen and ($desktop <= width <= $extra-large-desktop)
+        width: 70vw
+        height: 30rem
+        
+
     &[open]
         opacity: 1
         visibility: visible
@@ -26,6 +37,12 @@
         width: calc( 560px * 1.7 )
         height: calc( 315px * 1.7 )
         border-radius: 3rem
+
+        @media screen and (width <= $extra-large-desktop)
+            width: 100%
+            height: 100%
+            border-radius: 2rem
+            
 
     > button
         border: none
@@ -38,26 +55,26 @@
         padding: 0.3rem
         @include flex(center, center, row, wrap)
 
-@media screen and (orientation: portrait)
-    dialog
-        width: 92vw
-        height: 40em
-        padding: 2em
-        gap: 1em
+// @media screen and (orientation: portrait)
+//     dialog
+//         width: 92vw
+//         height: 40em
+//         padding: 2em
+//         gap: 1em
 
-    iframe
-        object-fit: contain
-        width: 80vw
-        height: 30vh
+//     iframe
+//         object-fit: contain
+//         width: 80vw
+//         height: 30vh
 
-    #trailer-dialog
-        width: 92vw
-        height: 40em
-        padding: 2em
-        gap: 1em
-        @include flex(center, center)
-        padding: 8vw
+//     #trailer-dialog
+//         width: 92vw
+//         height: 40em
+//         padding: 2em
+//         gap: 1em
+//         @include flex(center, center)
+//         padding: 8vw
 
-        & button
-            font-size: 0.9em
-            padding: 0.3em
+//         & button
+//             font-size: 0.9em
+//             padding: 0.3em

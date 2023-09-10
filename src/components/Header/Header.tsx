@@ -24,10 +24,6 @@ export const Header = () => {
                     <h1>CINEMAFUN</h1>
                 </div>
 
-                {/* <button id="toggleNavbarButton" className="button">
-                    <List size={16} color='#0f0f15' weight='duotone' />
-                </button> */}
-
                 <Button
                     label=''
                     icon={<List size={16} color='#0f0f15' weight='duotone' />}

@@ -146,55 +146,6 @@ export const MovieDetails = () => {
                                     }
                                 </div>
                             </dl>
-
-                            {/* <table className="movie-info-table">
-                                <tr id="days">
-                                    <th>Géneros</th>
-                                    {
-                                        movie?.genres?.map(genre => (
-                                            <td key={genre.id}><span className='genre'>{genre?.name}</span></td>
-                                        ))
-                                    }
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Clasificación</th>
-                                    <td className={getClassificationClass(movie.classification?.certification || 'NR')}>{movie?.classification?.certification || 'NR'}</td>
-                                </tr>
-                                <tr>
-                                    <th>Duración</th>
-                                    <td>{movie?.runtime} minutos</td>
-                                </tr>
-                                <tr>
-                                    <th>Estado</th>
-                                    <td>{getMovieStatus(movie?.status)}</td>
-                                </tr>
-                                <tr>
-                                    <th>Fecha de estreno</th>
-                                    <td>{new Date(movie?.releaseDate).toLocaleDateString('es', { dateStyle: 'long' })}</td>
-                                </tr>
-                                {
-                                    movie.country &&
-                                    <tr>
-                                        <th>País de producción</th>
-                                        <td className='company'>{movie?.country?.name}</td>
-                                    </tr>
-                                }
-                                {
-                                    movie.company &&
-                                    <tr>
-                                        <th>Compañía de producción</th>
-                                        <td className={`company ${getRandomColor()}`}>
-                                            {
-                                                movie?.company?.logoPath ?
-                                                    <img src={`https://image.tmdb.org/t/p/original${movie?.company?.logoPath}`} alt={movie?.company?.name} />
-                                                    : <FilmReel size={48} weight='duotone' />
-                                            }
-                                            <span>{movie?.company?.name}</span>
-                                        </td>
-                                    </tr>
-                                }
-                            </table> */}
                         </div>
                     </main>
                 </div>

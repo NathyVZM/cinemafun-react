@@ -8,6 +8,7 @@
     float: left
     position: sticky
     top: 8rem
+    transition: all 0.5s ease-in-out
 
     @media screen and ($desktop <= width <= $large-desktop)
         width: 20%
@@ -15,16 +16,15 @@
     @media screen and ($large-desktop <= width <= $extra-large-desktop)
         width: 15%
 
-    @media screen and (width <= $large-desktop)
+    @media screen and (width <= $desktop)
         visibility: hidden
         opacity: 0
-
-        &:not(.show)
-            height: 0
+        max-height: 0
 
         &.show
             visibility: visible
             opacity: 1
+            max-height: 500px
         
         
     > ul

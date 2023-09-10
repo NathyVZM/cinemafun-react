@@ -104,17 +104,18 @@
         font-size: 1.8rem
 
         @media screen and (orientation: portrait)
-            font-size: 1.4rem
+            font-size: 1.3rem
 
     & > header
         @include flex(flex-start, flex-start, column, wrap, 0.5rem)
         width: 100%
 
-        // @media screen and (width <= $extra-large-desktop)
-        //     gap: 1rem
+        @media screen and (width <= $extra-large-desktop)
+            // gap: 1rem
+            margin-top: 1rem
 
         & h3
-            font-size: 1rem
+            font-size: 0.9rem
             color: $secondary-text
             margin: 0
 
@@ -211,7 +212,7 @@
                             display: inline-block
 
     .tagline
-        font-size: 1rem
+        font-size: 0.9rem
         font-weight: 600
         color: $primary-text
         margin: 0

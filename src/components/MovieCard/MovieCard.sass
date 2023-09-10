@@ -15,6 +15,21 @@
     cursor: pointer
     margin: 0
 
+    @media screen and ($phone <= width <= $large-desktop)
+        width: 15rem
+        flex-basis: 15rem
+        min-height: 30rem
+        padding: 0.7rem
+        gap: 0.8rem
+
+    @media screen and (width <= $phone)
+        flex-basis: 10rem
+        width: 10rem
+        min-height: auto
+        padding: 0.6rem
+        gap: 0.8rem
+        
+
     @media screen and ($desktop <= width <= $extra-large-desktop)
         min-height: 35rem
 
@@ -30,6 +45,9 @@
         object-fit: cover
         translate: 0 0 1px
 
+        @media screen and (width <= $phone)
+            border-radius: 1rem
+
         @media screen and ($desktop <= width <= $large-desktop)
             flex-basis: 29rem
 
@@ -37,12 +55,21 @@
         width: 100%
         @include flex(center, flex-end, column, wrap, 0.5rem)
 
+        @media screen and (width <= $phone)
+            gap: 0.4rem
+
     & p
         text-overflow: ellipsis
         overflow: hidden
         white-space: nowrap
         width: 100%
         line-height: 1
+
+        @media screen and (width <= $phone)
+            font-size: 0.75rem
+
+            span
+                font-size: 0.75rem
 
     & .subtitle
         color: $secondary-text

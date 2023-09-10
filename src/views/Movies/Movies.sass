@@ -8,10 +8,10 @@
     position: relative
     padding-right: 1.9rem
 
-    @media screen and (orientation: landscape) and ($desktop <= width <= $large-desktop)
+    @media screen and ($desktop <= width <= $large-desktop)
         width: 77%
 
-    @media screen and (orientation: landscape) and ($large-desktop <= width <= $extra-large-desktop)
+    @media screen and ($large-desktop <= width <= $extra-large-desktop)
         width: 82.5%
 
     & > section
@@ -33,13 +33,23 @@
         &::after
             content: ""
             flex: auto
-            width: 36rem
+            width: 75rem
 
-        @media screen and (width <= $extra-large-desktop)
+        @media screen and (width <= $phone)
+            gap: 1rem
+
             &::after
-                content: ""
+                content: ''
                 flex: auto
-                width: 17rem
+                width: 10rem
+        
+        @media screen and ($phone <= width <= $large-desktop)
+            gap: 1rem
+            
+            &::after
+                content: ''
+                flex: auto
+                width: 15rem
 
     & > section:last-child
         margin-top: 3rem
