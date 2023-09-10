@@ -1,7 +1,7 @@
 import './App.sass'
 import { useContext } from 'react'
 import { Footer, Header, Loading, Sidebar, Trailer } from './components'
-import { SearchProvider, TrailerContext, LoadingContext } from './core/context'
+import { SearchProvider, TrailerContext, LoadingContext, NavbarProvider } from './core/context'
 import { Router } from './router'
 
 export const App = () => {
@@ -17,8 +17,11 @@ export const App = () => {
           <div className="green"></div>
           <div className="yellow"></div>
         </div>
-        <Header />
-        <Sidebar />
+
+        <NavbarProvider>
+          <Header />
+          <Sidebar />
+        </NavbarProvider>
         <Router />
         <Footer />
 

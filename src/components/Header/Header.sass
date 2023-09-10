@@ -1,3 +1,4 @@
+@import '../../styles/variables'
 @import '../../styles/mixins'
 @import '../../styles/breakpoints'
 
@@ -23,7 +24,20 @@
         flex-direction: column
         gap: 2rem
         margin: 0
+        animation: scroll-background linear
+        animation-timeline: scroll(root block)
 
     @media screen and (orientation: landscape) and (width <= $extra-large-desktop)
         gap: 2rem
+
+
+@keyframes scroll-background
+    0%
+        background-color: transparent
+        
+    10%
+        background-color: transparentize($background, 0.3)
+    
+    100%
+        background-color: transparentize($background, 0.3)
         

@@ -51,6 +51,12 @@
                 flex: auto
                 width: 15rem
 
+        @media screen and ($large-desktop <= width <= $extra-large-desktop)
+            &::after
+                content: ''
+                flex: auto
+                width: 17rem
+
     & > section:last-child
         margin-top: 3rem
         @include flex(center, stretch)
@@ -66,5 +72,4 @@
         padding-top: 1rem
 
         & svg
-            width: 1.5rem
-            height: 1.5rem
+            @include size(1.5rem, 1.5rem)

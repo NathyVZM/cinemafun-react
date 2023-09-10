@@ -1,7 +1,3 @@
-// const STATUS = {
-//     'Released': 'Estrenada'
-// }
-
 const STATUS_OPTIONS = new Map<string, string>([
     ['Released', 'Estrenada']
 ])

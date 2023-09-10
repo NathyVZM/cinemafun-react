@@ -1,19 +1,19 @@
 import './Header.sass'
 import { useContext } from 'react'
 import { MagnifyingGlass, FilmSlate, List } from '@phosphor-icons/react'
-import { SearchContext } from '../../core/context'
+import { NavbarContext, SearchContext } from '../../core/context'
 import { Button } from '..'
 
 export const Header = () => {
     const { search, setSearch } = useContext(SearchContext)
+    const { toggle, setToggle } = useContext(NavbarContext)
 
     const onSerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value)
     }
 
     const toggleNavbar = () => {
-        const navbar = document.querySelector('#aside')
-        navbar?.classList.toggle('show')
+        setToggle(!toggle)
     }
 
     return (

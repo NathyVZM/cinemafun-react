@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react'
 import { LoadingContext } from '.'
-
 interface LoadingProviderProps {
     children: ReactNode
 }

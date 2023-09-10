@@ -17,7 +17,6 @@ export const MovieDetails = () => {
     useEffect(() => {
         scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         getMovieById(Number(params?.id))
-        console.log(movie)
     }, [])
 
     const toggleTrailer = (key: string) => setTrailer({ ...trailer, key: key, isOpened: !trailer.isOpened })
